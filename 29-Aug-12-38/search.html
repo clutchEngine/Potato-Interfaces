@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <div id="header">
+      <div class="links-top">
+        <a href="" id="toplink-web" active>WEB</a>
+        <a href="" id="toplink-images">IMAGES</a>
+        <a href="" id="toplink-forums">FORUMS</a> <a href="" id="toplink-blogs">BLOGS</a>
+      </div>
+    </div>
+    <potato title="SearchFart" id="potato"></potato>
+    <div class="logo-and-form">
+      <h1 class="logo big" onclick="window.location.href='/';">potato</h1>
+      <form action="/redirector.html" method="get">
+        <input
+          name="q"
+          placeholder=""
+          id="weather-desc"
+        /><button type="submit" id="serp-btn"><img src="/static/img/search-white.svg"></button>
+      </form>
+      
+      </div>
+    </div>
+    <!--<div class="warning"><b>Warning</b>: results may be slow as CringeCrawl™ Backup Technology™ uses bad code that makes it slow</div>-->
+    <div class="result-columns">
+      <div class="result-column" id="results">
+
+      </div>
+      <!--<div class="result-column" id="res2">
+
+      </div>-->
+    </div>
+    <style>
+      /*extra serp stuff not sound in the main style.css*/
+      
+      #header a {
+        font-size: 11px;
+        color: #aaa;
+        text-decoration: none;
+      }
+
+      .logo-and-form {
+        margin-top: 10px;
+        width: 98vw;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-and-form h1 {
+        margin: 0;
+        flex: 0 0 auto;
+      }
+
+      .logo-and-form form {
+        display: flex;
+        width: 87%;
+        margin-left: 20px;
+      }
+
+      .logo-and-form form input {
+        width: 87%;
+      }
+
+      .logo-and-form form button {
+        width: 10%;
+      }
+
+      body {overflow-x: hidden; overflow-y:visible;}
+
+      .result {
+        background: none;
+        padding: 13px;
+        width: 97vw;
+        margin: 3px;
+        border-radius: 3px;
+        color: #aaa;
+        margin: auto;
+        border-bottom: 1px solid white;
+      }
+
+      .result h3 {
+        color: darkgrey;
+        padding: 0;
+        margin: 0;
+        
+      }
+
+      .result p {
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+      }
+
+      .result a {
+        text-decoration: none;
+      }
+
+      .result small strong {
+        color: #72b9fc;
+      }
+
+      .result p{
+        color: #aaa;
+      }
+        
+        
+      
+    </style>
+    <script>
+      function echo(elementId, string) {
+        document.getElementById(elementId).innerText = string;
+      }
+
+
+
+      const $_GET = (sget) => new URLSearchParams(window.location.search).get(sget);
+      async function include(elementId, file) {
+      const response = await fetch(file);
+      if (!response.ok) {
+          throw new Error("Could not get file");
+        }
+        document.getElementById(elementId).innerHTML = await response.text();
+      }
+
+      async function peelPotato() {
+      const userSearchQuery = $_GET("q").replace("the", " ").replace("how", " ").replace("an", " ").replace("is", " ").replace("so", " ").replace("why", " ").replace("what", " ").replace("fuck", " ");
+      const potato = await fetch("/idx/search.php?q="+userSearchQuery);
+      const peeledPotato = await potato.json();
+      console.log("Peeled potato: " + peeledPotato)
+      // console.log(peeledPotato) stop showing results in console
+      // console.log(peeledPotato["results"])
+      // console.log(peeledPotato["results"].length)
+          filter = []; // There's a filter in the real one but there's tons of sensitive words
+        const potatoRegex = new RegExp(filter.join("|"), "i");
+        
+        //const potatoRegexSpamSnippet = new RegExp(spamFilterSnippets.join("|"), "i");
+        
+        //const potatoRegexSpamUrl = new RegExp(spamFilterUrls.join("|"), "i");
+		const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+		const safeSnippets = (typeof spamFilterSnippets !== 'undefined' ? spamFilterSnippets : []).filter(Boolean).map(escapeRegex);
+		const safeUrls = (typeof spamFilterUrls !== 'undefined' ? spamFilterUrls : []).filter(Boolean).map(escapeRegex);
+		const potatoRegexSpamSnippet = safeSnippets.length ? new RegExp(safeSnippets.join("|"), "i") : /$./;
+		const potatoRegexSpamUrl = safeUrls.length ? new RegExp(safeUrls.join("|"), "i") : /$./;
+
+        
+      peeledPotato["results"].forEach((slice, index)=>{
+        const potatoContainsSpamSnippet = potatoRegexSpamSnippet.test(slice["snippet"]);
+            const potatoContainsFilterWord = potatoRegex.test(slice["title"]);
+            const potatoContainsSpamUrl = potatoRegexSpamUrl.test(slice["url"]);
+        if (!potatoContainsFilterWord && !potatoContainsSpamSnippet && !potatoContainsSpamUrl) {
+            
+        /*console.log(slice["title"]);
+        console.log(slice["url"]);
+        console.log(slice["snippet"]);*/
+        potatoId = slice["title"].split(' ');
+        fullPotatoId = "RESULT-" + "potatoId-INDEX-" + index;
+        potatoTitle = fullPotatoId + "-TITLE";
+        potatoUrl = fullPotatoId + "-URL";
+        potatoSnippet = fullPotatoId + "-SNIPPET";
+        document.getElementById("results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+        document.getElementById(potatoTitle).innerText = slice["title"];
+        document.getElementById(potatoUrl).innerText = slice["url"];
+        document.getElementById(potatoSnippet).innerText = slice["snippet"];
+            /*if (document.getElementById(fullPotatoSnippet).innerText = "") {
+                document.getElementById(fullPotatoId).remove();
+            }*/
+        
+                
+      } else if (potatoContainsSpamSnippet) {
+        console.log("[spam]")
+      }
+      })
+    }
+    peelPotato();
+    document.getElementById("toplink-web").href = "/search.html?q=" + $_GET("q");
+    document.getElementById("toplink-images").href = "/images.html?q=" + $_GET("q");
+    document.getElementById("toplink-forums").href = "/forums.html?q=" + $_GET("q");
+    document.getElementById("toplink-blogs").href = "/blogs.html?q=" + $_GET("q");
+    async function peelBackupPotato() {
+
+    try {
+        const backupPotato = await fetch("/idx/toilet/v1.php");
+
+        console.log("Backup HTTP status:", backupPotato.status);
+
+        if (!backupPotato.ok) {
+            throw new Error("Backup HTTP error: " + backupPotato.status);
+        }
+
+        const peeledBackupPotato = await backupPotato.json();
+
+        console.log("backup, ", peeledBackupPotato);
+        console.log("backup, ", peeledBackupPotato["external_pages"]);
+
+    } catch (error) {
+        console.error("error, ", error);
+    }
+}
+
+
+async function startSearch() {
+    try {
+        await peelPotato();
+
+        const results = document.getElementById("results");
+
+        if (results.innerHTML.trim() === "") {
+            await peelBackupPotato();
+        } else {
+            console.log("main worked");
+        }
+
+    } catch (error) {
+        console.error("bruh", error);
+
+        // If the main search completely fails, use backup
+        await peelBackupPotato();
+    }
+}
+
+startSearch();
+        document.getElementById("weather-desc").value = $_GET("q");
+    </script>
+    <script src="js/rank.js"></script>
+    <script src="js/weather2.js"></script>
+  </body>
+</html>
