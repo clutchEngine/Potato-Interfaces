@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <link rel="icon" href="/static/img/search-grey.svg" />
+    <title>Potato | Search</title>
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <div id="header">
+      <a href="https://openweathermap.org/" id="weather-summary"
+        >Set up a weather key</a
+      ><a id="weather-temp" onclick="document.getElementById('weatherSettings').classList.toggle('hidden')">Settings</a>
+    </div>
+<!--<div class="warning"><b>Warning</b>: this is in beta. It may be slow and/or unstable. If you're using it right now, know that I'm never gonna give you up!</div>-->
+    <potato title="SearchFart" id="potato"></potato>
+    <div class="logo-and-form">
+      <h1 class="logo big">potato</h1>
+      <form action="/redirector.html" method="get">
+        <input
+          name="q"
+          placeholder=""
+          id="weather-desc"
+          autocomplete="off"
+        /><button id="mic-btn"><img src="/static/img/mic-blue.svg"></button><button type="submit" id="serp-btn"><img src="/static/img/search-white.svg"></button>
+      </form>
+      
+    </div><div class="links hidden" id="weatherSettings">
+        <span id="weather-all">
+          weather:
+          <input id="weather-apikey" placeholder="your api key" /><input
+            id="weather-location"
+            placeholder="your location" /><button
+            onclick="wf()"
+            id="getWeatherBtn"
+          >
+            get weather
+          </button></span>
+        
+      </div>
+              <!--<div class="forum-news">
+              	<h3 style="color: #aaa; letter-spacing: -1px;">frutiger aero archive forums</h3>
+              	<div class="posts-categories">
+              		<div id="forum-categories"></div>
+              		<div id="forum-posts"></div>
+              	</div>
+              </div>-->
+              <footer><div><a href="/plus/webmaster.html">Webmaster</a> &nbsp;&nbsp; <a href="/plus/terms.html">Privacy + Terms</a></div><div>&copy; Potato Technologies</div></footer>
+                  <!--<script>
+                  	async function loadForumPosts() {
+                  const forumPosts = await fetch("/static/json/forums.json");
+					const forumPostsBruh = await forumPosts.json();
+					console.log(forumPostsBruh)
+                        for (i = 0; i <= 6; i++) {
+                            document.getElementById("forum-categories").innerHTML += `
+                                	<div style="background: ${forumPostsBruh[i]['bgcolor']}; padding: 3px;">${forumPostsBruh[i]["category"]}</div>
+                                `
+                            document.getElementById("forum-posts").innerHTML += `
+                                	<div style="background: ${forumPostsBruh[i]['bgcolor']}; padding: 3px;" class="forum-post" onclick="window.location.href='${forumPostsBruh[i][url]};'">${forumPostsBruh[i]["content"]}</div>
+                                `
+                        }
+              }
+loadForumPosts();
+                  </script>-->
+    <style>// Someone said she thinks they won't like it so I've commented it out
+                  //.posts-categories {display: flex; width: 100%; justify-content: space-between;}
+//#forum-categories {width: 20%; color: white;  box-sizing: border-box; flex-shrink: 0; display: inline-block;}
+//#forum-posts {width: 79%; flex-shrink: 0; display: flex; justify-content: space-between; overflow-x: scroll;}
+//#forum-posts .forum-post {padding: 3px; max-width: 20%;}
+/*.forum-news {
+                  width: 70vw; margin: auto;
+              }*/
+
+      .logo-and-form {
+        margin: auto;
+        margin-top: 18vw;
+        width: 49vw;
+        border-radius: 3px;
+        color: black;
+                  display: flex;
+                  gap: 10px;
+      }
+
+      .logo-and-form .form-container {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to bottom, lightgrey, darkgrey);
+      }
+
+      .logo-and-form form {
+        width: 80%;
+
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .logo-and-form form input {
+        width: 80%;
+        outline: none;
+        padding: 3px;
+        font-style: normal;
+        
+          border: 1px solid lightgrey;border-right: none;
+      }
+
+      .logo-and-form form #serp-btn {
+        width: 18%;
+        background: #72b9fc;
+        color: white;
+        padding: 3px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        transition: 0.1s all ease-in-out;
+      }
+
+#mic-btn {background: white; border-radius: 0; border: 1px solid lightgrey; border-left: none;}
+
+      .logo-and-form form button:hover,
+      .logo-and-form form button.DEV-hover {
+        box-shadow: 1px 1px 0px lightgrey;
+      }
+
+      .logo-and-form form button:active,
+      .logo-and-form form button.DEV-pressed {
+        box-shadow: 1px 1px 0px black;
+      }
+
+      a {
+        text-decoration: underline;
+        user-select: none;
+        color: #72b9fc;
+      }
+
+      a:hover {
+        cursor: pointer;
+      }
+
+      
+      #weather-apikey,
+      #weather-location {
+        width: 100px;
+      }
+		body {min-height: 100vh;}
+		footer {
+            color: grey;
+            border-top: 1px solid lightgrey;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 3px;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="js/weather3.js"></script>
+        <script>const $_GET = (sget) => new URLSearchParams(window.location.search).get(sget);if($_GET("i") == "1") {window.location.href='/';} document.getElementById("mic-btn").addEventListener("click", (e)=>{e.preventDefault; window.location.href="https://vocaroo.com/";}); /*mic btn not working, maybe add Vocaroo's code here? */ if($_GET("q") != "" && $_GET("q") != null) {window.location.href="/redirector.html?q="+$_GET("q");}</script>
+  </body>
+</html>
