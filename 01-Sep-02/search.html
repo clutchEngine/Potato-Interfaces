@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+    <link rel="icon" href="/static/img/search-grey.svg" />
+    <link rel="stylesheet" href="style.css" />
+        <title>potato</title>
+    </head>
+  <body>
+    
+    <div id="header">
+      <div class="links-top">
+        <a href="" id="toplink-web" active>WEB</a>
+        <a href="" id="toplink-images">IMAGES</a>
+      </div>
+    </div>
+    <potato title="SearchFart" id="potato"></potato>
+    <div class="logo-and-form">
+      <h1 class="logo big" onclick="window.location.href='/';">potato</h1>
+      <form action="/redirector.html" method="get">
+        <input
+          name="q"
+          placeholder=""
+          id="weather-desc"
+        /><button type="submit" id="serp-btn"><img src="/static/img/search-white.svg"></button>
+      </form>
+      
+      </div>
+    </div>
+    <!--<div class="warning"><b>Warning</b>: results may be slow as CringeCrawl™ Backup Technology™ uses bad code that makes it slow</div>-->
+    <div class="sidebar-results">
+        <div class="sidebar">
+            <h4>categories</h4>
+            <div id="top-resbtn"><button class="result-category top-res">Top</button><br></div>
+            <div id="blog-resbtn"><button class="result-category blog-res">Blogs</button><br></div>
+            <div id="forum-resbtn"><button class="result-category forum-res">Forums</button><br></div>
+            <div id="podcast-resbtn"><button class="result-category podcast-res">Podcasts</button><br></div>
+            <div id="ticket-resbtn"><button class="result-category ticket-res">Tickets</button><br></div>
+            <div id="movie-resbtn"><button class="result-category movie-res">Movies</button><br></div>
+            <div id="music-rebtn"><button class="result-category music-res">Music</button><br></div>
+            <div id="other-resbtn"><button class="result-category other-res">Other</button><br></div>
+        </div>
+    <div class="result-columns">
+      <div class="result-column" id="top-results">
+
+      </div>
+        <div class="result-column" id="blog-results">
+
+      </div>
+        <div class="result-column" id="forum-results">
+
+      </div>
+        <div class="result-column" id="podcast-results">
+
+      </div>
+        <div class="result-column" id="ticket-results">
+
+      </div>
+        <div class="result-column" id="movie-results">
+
+      </div>
+        <div class="result-column" id="music-results">
+
+      </div>
+        <div class="result-column" id="other-results">
+
+      </div>
+      <!--<div class="result-column" id="res2">
+
+      </div>-->
+    </div>
+    </div><script>const params2 = new URLSearchParams(window.location.search);
+        const currentPage2 = params2.get("p");</script>
+    <div id="navbtns"><button style="height: 80px; width: 80px; background: url('/static/img/back.png'); background-size: cover; border-radius: 80px; border: none;" onclick="window.location.href=`/search4.html?q=${params2.get('q')}`;"></button><button style="height: 80px; width: 80px; background: url('/static/img/forward.png'); background-size: cover; border-radius: 80px; border: none;" onclick="window.location.href=`/search4.html?q=${params2.get('q')}&p=2`;"></button></div>
+    <footer><div><a href="/plus/webmaster.html">Webmaster</a> &nbsp;&nbsp; <a href="/plus/terms.html">Privacy + Terms</a></div><div>&copy; Potato Technologies</div></footer>
+    <style>
+      /*extra serp stuff not sound in the main style.css*/
+        #navbtns {margin: auto; width: 18vw; display: flex; justify-content: space-between;}
+        
+        #top-results, .top-res {
+            background: #00bce9;
+        }
+        
+        #blog-results, .blog-res {
+            background: #58849d;
+        }
+        
+        #forum-results, .forum-res {
+            background: #fc6b02;
+        }
+        
+        #other-results, .other-res {
+            background: #66cb23;
+        }
+        
+        #podcast-results, .podcast-res {
+            background: #ffd900;
+        }
+        
+        #ticket-results, .ticket-res {
+            background: #0c0882;
+        }
+        
+        #movie-results, .movie-res {
+            background: #fa0800;
+        }
+        
+        #music-results, .music-res {
+            background: #fa007d;
+        }
+        
+        .result-column {padding: 3px; width: 87vw; margin: 8px;}
+        
+      
+      #header a {
+        font-size: 11px;
+        color: #aaa;
+        text-decoration: none;
+      }
+
+      .logo-and-form {
+        margin-top: 10px;
+        width: 98vw;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-and-form h1 {
+        margin: 0;
+        flex: 0 0 auto;
+      }
+
+      .logo-and-form form {
+        display: flex;
+        width: 90%;
+        margin-left: 20px;
+      }
+
+      .logo-and-form form input {
+        width: 87%;
+      }
+
+      .logo-and-form form button {
+        width: 10%;
+      }
+
+      body {overflow-x: hidden; overflow-y:visible;}
+
+      .result {
+        background: none;
+        padding: 13px;
+        /*width: 100%;*/
+        margin: 3px;
+        border-radius: 0px;
+        color: #aaa;
+        margin: auto;
+        border-bottom: 1px solid white;
+          background: white;
+      }
+
+      .result h3 {
+        color: darkgrey;
+        padding: 0;
+        margin: 0;
+        
+      }
+
+      .result p {
+        padding: 0;
+        margin: 0;
+        font-style: normal;
+      }
+
+      .result a {
+        text-decoration: none;
+      }
+
+      .result small strong {
+        color: #72b9fc;
+      }
+
+      .result p{
+        color: #aaa;
+      }
+        
+        
+      
+        .sidebar-results {display: flex; align-items: flex-start; justify-content: center; width: 98vw; margin: auto;}
+        .sidebar {width: 13vw; color: #aaa; box-sizing: border-box; padding: 7px;}
+        .sidebar h4 {padding: 0; margin: 0;}
+        .sidebar button.result-category {border-radius: 0; padding: 7px; border: none; margin: 4px; color: white; font-weight: bold; letter-spacing: -1px; padding-left: 7px; transition: 0.2s all ease-in-out;}
+        
+        .sidebar button.result-category:hover {padding-left: 18px;}
+    </style>
+    <script>
+      function echo(elementId, string) {
+        document.getElementById(elementId).innerText = string;
+      }
+
+
+
+      const $_GET = (sget) => new URLSearchParams(window.location.search).get(sget);
+      async function include(elementId, file) {
+      const response = await fetch(file);
+      if (!response.ok) {
+          throw new Error("Could not get file");
+        }
+        document.getElementById(elementId).innerHTML = await response.text();
+      }
+        
+        const params = new URLSearchParams(window.location.search);
+        currentPage = params.get("p");
+
+      async function peelPotato() {
+      const userSearchQuery = $_GET("q").toLowerCase().replace("the", " ").replace("how", " ").replace("an", " ").replace(" is ", " ").replace("so", " ").replace("why", " ").replace("what", " ").replace("fuck", " ").replace("who", " ").replace("a ", " ").replace(" a ", " ");
+          document.getElementById("weather-desc").value = $_GET("q");
+      const potato = await fetch("/idx/search.php?q="+userSearchQuery);
+      const peeledPotato = await potato.json();
+      console.log("Peeled potato: " + peeledPotato)
+      // console.log(peeledPotato) stop showing results in console
+      // console.log(peeledPotato["results"])
+      // console.log(peeledPotato["results"].length)
+          filter = ["anal","analsex","blowjob","blowjobs","boob","boobs","clitoris","cock","cocks","cum","dick","dicks","gangbang","gangbangs","gangbanging","oral","oralsex","porn","porno","pussy","pussies","sex","sexy","tit","tits","xxx","xxxx","xxxx"];
+        const potatoRegex = new RegExp(filter.join("|"), "i");
+        
+        //const potatoRegexSpamSnippet = new RegExp(spamFilterSnippets.join("|"), "i");
+        
+        //const potatoRegexSpamUrl = new RegExp(spamFilterUrls.join("|"), "i");
+		const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+		const safeSnippets = (typeof spamFilterSnippets !== 'undefined' ? spamFilterSnippets : []).filter(Boolean).map(escapeRegex);
+		const safeUrls = (typeof spamFilterUrls !== 'undefined' ? spamFilterUrls : []).filter(Boolean).map(escapeRegex);
+		const potatoRegexSpamSnippet = safeSnippets.length ? new RegExp(safeSnippets.join("|"), "i") : /$./;
+		const potatoRegexSpamUrl = safeUrls.length ? new RegExp(safeUrls.join("|"), "i") : /$./;
+
+        
+      peeledPotato["results"].forEach((slice, index)=>{
+          
+        const potatoContainsSpamSnippet = potatoRegexSpamSnippet.test(slice["snippet"]);
+            const potatoContainsFilterWord = potatoRegex.test(slice["title"]);
+            const potatoContainsSpamUrl = potatoRegexSpamUrl.test(slice["url"]);
+        if (!potatoContainsFilterWord && !potatoContainsSpamSnippet && !potatoContainsSpamUrl) {
+            
+        /*console.log(slice["title"]);
+        console.log(slice["url"]);
+        console.log(slice["snippet"]);*/
+        potatoId = slice["title"].split(' ');
+        fullPotatoId = "RESULT-" + "potatoId-INDEX-" + index;
+        potatoTitle = fullPotatoId + "-TITLE";
+        potatoUrl = fullPotatoId + "-URL";
+        potatoSnippet = fullPotatoId + "-SNIPPET";
+            if (!$_GET("p")) {
+        // Categories
+                if (index < 10) {
+            if (index == 0 || index == 1 || index == 2) {
+                document.getElementById("top-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("Blog") || slice["title"].includes("blog")) {
+                document.getElementById("blog-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("forum") || slice["title"].includes("Forum") || slice["title"].includes("Forums") || slice["title"].includes("forums")) {
+                document.getElementById("forum-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("Podcast") || slice["title"].includes("podcast") || slice["title"].includes("podcasts") || slice["title"].includes("Podcasts") || slice["url"].includes("podcasts.apple.com")) {
+                document.getElementById("podcast-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("ticket") || slice["title"].includes("tickets") || slice["title"].includes("Ticket") || slice["title"].includes("Tickets")) {
+                document.getElementById("ticket-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("movie") || slice["title"].includes("movies") || slice["title"].includes("Movie") || slice["title"].includes("Movies") || slice["title"].includes("film") || slice["title"].includes("films") || slice["title"].includes("Film") || slice["title"].includes("Films") || slice["url"].includes("imdb.com") || slice["title"].includes("actor") || slice["title"].includes("actress") || slice["title"].includes("acting")) {
+                document.getElementById("blog-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("music") || slice["title"].includes("Music") || slice["title"].includes("song") || slice["title"].includes("Song") || slice["title"].includes("songs") || slice["title"].includes("Songs") || slice["title"].includes("album") || slice["title"].includes("Album")) {
+                document.getElementById("forum-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else {
+                document.getElementById("other-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            }
+        document.getElementById(potatoTitle).innerText = slice["title"];
+        document.getElementById(potatoUrl).innerText = slice["url"];
+        document.getElementById(potatoSnippet).innerText = slice["snippet"];
+            /*if (document.getElementById(fullPotatoSnippet).innerText = "") {
+                document.getElementById(fullPotatoId).remove();
+            }*/}
+        } else if (currentPage == "2") {
+             if (index > 10 && index <= 20) {
+                 if (slice["title"].includes("Blog") || slice["title"].includes("blog")) {
+                document.getElementById("blog-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else if (slice["title"].includes("forum") || slice["title"].includes("Forum") || slice["title"].includes("Forums") || slice["title"].includes("forums")) {
+                document.getElementById("forum-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            } else {
+                document.getElementById("other-results").innerHTML += `
+          <div class="result" id="${fullPotatoId}">
+            <a href="${slice["url"]}"><h3 id="${potatoTitle}"></h3></a>
+              <small><strong id="${potatoUrl}"></strong></small>
+            <p id="${potatoSnippet}"></p>
+          </div>
+        `
+            }
+        document.getElementById(potatoTitle).innerText = slice["title"];
+        document.getElementById(potatoUrl).innerText = slice["url"];
+        document.getElementById(potatoSnippet).innerText = slice["snippet"];
+            /*if (document.getElementById(fullPotatoSnippet).innerText = "") {
+                document.getElementById(fullPotatoId).remove();
+            }*/}
+        }
+                
+      } else if (potatoContainsSpamSnippet) {
+        console.log("[spam]")
+      }
+      })
+    }
+    peelPotato();
+    document.getElementById("toplink-web").href = "/search.html?q=" + $_GET("q");
+    document.getElementById("toplink-images").href = "/images.html?q=" + $_GET("q");
+    document.getElementById("toplink-forums").href = "/forums.html?q=" + $_GET("q");
+    document.getElementById("toplink-blogs").href = "/blogs.html?q=" + $_GET("q");
+    async function peelBackupPotato() {
+
+    try {
+        const backupPotato = await fetch("/idx/toilet/nodownload.php");
+
+        console.log("Backup HTTP status:", backupPotato.status);
+
+        if (!backupPotato.ok) {
+            throw new Error("Backup HTTP error: " + backupPotato.status);
+        }
+
+        const peeledBackupPotato = await backupPotato.json();
+
+        console.log("backup, ", peeledBackupPotato);
+        console.log("backup, ", peeledBackupPotato["results"]);
+
+    } catch (error) {
+        console.error("error, ", error);
+    }
+}
+
+
+async function startSearch() {
+    try {
+        await peelPotato();
+
+        const results = document.getElementById("results");
+
+        if (results.innerHTML.trim() === "") {
+            await peelBackupPotato();
+        } else {
+            console.log("main worked");
+        }
+
+    } catch (error) {
+        console.error("BAZINGA077-", error);
+
+        // If the main search completely fails, use backup
+        await peelBackupPotato();
+    }
+}
+
+startSearch();
+        document.getElementById("weather-desc").value = $_GET("q");
+    </script>
+    <script src="js/rank.js"></script>
+    <script src="js/weather2.js"></script>
+  </body>
+</html>
