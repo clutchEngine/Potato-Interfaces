@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+    <link rel="icon" href="/static/img/search-grey.svg" />
+    <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/static/css/serp-rescat.css" />
+        <meta name="description" content="An independent search engine dedicated to old web discovery. Search with Potato."
+    </head>
+  <body>
+    <div id="header-form">
+    <div id="header">
+      <div class="links-top">
+        <a href="" id="toplink-web" active>WEB</a>
+        <a href="" id="toplink-images">IMAGES</a>
+        <a href="" id="toplink-dictionary">DICTIONARY</a>
+      </div>
+    </div>
+    <div class="logo-and-form">
+      <h1 class="logo big" onclick="window.location.href='/';">potato</h1>
+      <form action="/redirector.html" method="get">
+        <input
+          name="q"
+          placeholder=""
+          id="weather-desc"
+          autocomplete="off" style="border-right: none;"
+        /><button type="submit" id="serp-btn" style="background:linear-gradient(to bottom, white 0%, white 40%, #f7f7f7 41%, lightgrey 100%); border: 2px inset #8f8f9d; border-left: none; text-align: right;"><img src="/static/img/search-grey.svg"></button>
+      </form>
+      
+      </div>
+      </div>
+    <!--<div class="warning"><b>Warning</b>: results may be slow as CringeCrawl™ Backup Technology™ uses bad code that makes it slow</div>-->
+    <div class="sidebar-results">
+        <div class="sidebar">
+            <h4>categories</h4>
+            <div id="top-resbtn"></div>
+            <div id="blog-resbtn"></div>
+            <div id="forum-resbtn"></div>
+            <div id="podcast-resbtn"></div>
+            <div id="ticket-resbtn"></div>
+            <div id="movie-resbtn"></div>
+            <div id="music-resbtn"></div>
+            <div id="other-resbtn"></div>
+        </div>
+    <div class="result-columns">
+      <div class="result-column" id="top-results"></div>
+        <div class="result-column" id="blog-results"></div>
+        <div class="result-column" id="forum-results"></div>
+        <div class="result-column" id="podcast-results"></div>
+        <div class="result-column" id="ticket-results"></div>
+        <div class="result-column" id="movie-results"></div>
+        <div class="result-column" id="music-results"></div>
+        <div class="result-column" id="other-results"></div>
+    </div>
+    </div><script>const params2 = new URLSearchParams(window.location.search);
+        const currentPage2 = params2.get("p");</script>
+    <div id="navbtns"><button style="height: 40px; width: 40px; background: url('/static/img/back.png'); background-size: cover; border-radius: 40px; border: none;" onclick="window.location.href=`/search4.html?q=${params2.get('q')}`;"></button><button style="height: 40px; width: 40px; background: url('/static/img/forward.png'); background-size: cover; border-radius: 40px; border: none;" onclick="window.location.href=`/search4.html?q=${params2.get('q')}&p=2`;"></button></div>
+    <footer><div><a href="/plus/webmaster.html">Webmaster</a> &nbsp;&nbsp; <a href="/plus/terms.html">Privacy + Terms</a></div><div>&copy; Potato Technologies</div></footer>
+      <script src="js/rank.js"></script>
+    <script src="/js/serp-rescat2.js"></script>
+    
+    <script src="js/weather2.js"></script>
+  </body>
+</html>
