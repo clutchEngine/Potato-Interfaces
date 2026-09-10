@@ -1,0 +1,169 @@
+:root {
+    --accent:  #ff1493 /*#61b4fd*/;
+}
+
+body {
+  background: url("/static/img/homepage-landscape.jpg"), #f7f7f7;
+  background-size: cover;
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  perspective: 800px;
+  overflow: hidden;
+}
+
+.logo {
+  padding: 0;
+  margin: 0;
+  letter-spacing: -2px;
+  color: var(--accent);
+  /*text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);*/
+  cursor: pointer;
+}
+
+.logo.big {
+  font-size: 40px;
+}
+
+.logo-and-form {
+  margin: auto;
+  margin-top: 140px;
+  width: 40vw;
+}
+
+.logo-and-form .form-container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, lightgrey, darkgrey);
+}
+
+.logo-and-form form {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-and-form form input {
+  width: 90%;
+  outline: none;
+  padding: 7px;
+}
+
+.logo-and-form form #serp-btn {
+  width:10%;
+  background: var(--accent);
+  color: white;
+  padding: 7px;
+  border: none;
+  transition: 0.1s all ease-in-out;
+}
+
+.logo-and-form form input.homepage {
+  width: 80%;
+  outline: none;
+  padding: 7px;
+}
+
+.logo-and-form form #serp-btn.homepage {
+  width: 18%;
+  background: var(--accent);
+  color: white;
+  padding: 7px;
+  border: none;
+  transition: 0.1s all ease-in-out;
+}
+
+/*.logo-and-form form button:hover,
+.logo-and-form form button.DEV-hover {
+  box-shadow: 1px 1px 0px white;
+}
+
+.logo-and-form form button:active,
+.logo-and-form form button.DEV-pressed {
+  box-shadow: 1px 1px 0px deeppink;
+}
+*/
+a {
+  text-decoration: underline;
+  user-select: none;
+  color: white;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+
+#header {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  background: none;
+  box-sizing: border-box;
+    /*border-bottom: 1px solid #dcdcdc;*/
+}
+
+#weather-apikey,
+#weather-location {
+  width: 100px;
+}
+
+.logo span {
+  background: linear-gradient(
+    to bottom,
+    #111,
+    white 0%,
+    rgb(81, 92, 105) 40%,
+    #444444 43%,
+    #494949,
+    black 100%
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.hidden {display: none;}
+
+.warning {
+            width: 100vw;
+            padding: 2px;
+            box-sizing: border-box;
+            background: linear-gradient(red, darkred);
+            color: white;
+        }
+#header .links-top a[active] {background: black; color: white; border-bottom: 3px solid var(--accent); padding: 4px;}
+#header .links-top a {background: #111; color: white; border-bottom: none; padding: 4px;}
+
+footer {
+            color: grey;
+            /*border-top: 1px solid lightgrey;*/
+            
+            width: 100%;
+            padding: 3px;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            box-sizing: border-box;
+    		position: sticky;
+   			bottom: 0;
+    		left: 0;
+        }
+
+footer a {color: var(--accent); text-decoration: none;}
+
+/*Experimental?*/
+#mic-btn, #cam-btn, #status-btn {background: white; border-radius: 0; border: 1px solid lightgrey; border-left: none; display: inline-block; padding: 7px; padding-top: 8px;}
+
+#cam-btn, #status-btn {border-right: none; padding-top: 7px;}
+
+#header-form {position: sticky; top: 0; left: 0;}
