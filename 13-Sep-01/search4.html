@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+    <link rel="icon" href="/static/img/search-grey.svg" />
+    <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/static/css/serp-rescat4.css" />
+        <link rel="stylesheet" href="/static/css/extra.css" />
+        <meta name="description" content="An independent search engine dedicated to old web discovery. Search with Potato."
+    </head>
+  <body>
+    <div id="header-form">
+    <div id="header">
+      <div class="links-top">
+        <a href="" id="toplink-web" active>WEB</a>
+        <a href="" id="toplink-images">IMAGES</a>
+        <a href="" id="toplink-dictionary">DICTIONARY</a>
+      </div>
+    </div>
+    <div class="logo-and-form">
+      <h1 class="logo big" onclick="window.location.href='/';">potato</h1>
+      <form action="/redirector.html" method="get">
+        <input
+          name="q"
+          placeholder=""
+          id="weather-desc"
+          autocomplete="off" style="border-right: none;"
+        /><button type="submit" id="serp-btn" style="background:linear-gradient(to bottom, white 0%, white 40%, #f7f7f7 41%, lightgrey 100%); border:1px solid #f7f7f7; border-left: none; text-align: right;"><img src="/static/img/search-grey.svg" height="24"></button>
+      </form><svg style="margin-left: 7px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff" onclick="document.getElementById('slide-out').classList.toggle('slide-out');" label="Open sidebar"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+      
+      </div>
+      </div>
+      <div id="slide-out">
+          <a id="so-web">Web</a>
+          <a id="so-dictionary">Dictionary</a>
+          <div style="color: #aaa; padding: 7px;">&copy; Potato Technologies</div>
+      </div>
+      <div class="sidebar-results">
+        <div class="sidebar">
+            <h4 style="font-weight:normal;"><small>Categories</small></h4>
+            <div id="top-resbtn"></div>
+            <div id="blog-resbtn"></div>
+            <div id="forum-resbtn"></div>
+            <div id="podcast-resbtn"></div>
+            <div id="ticket-resbtn"></div>
+            <div id="movie-resbtn"></div>
+            <div id="music-resbtn"></div>
+            <div id="other-resbtn"></div>
+        </div>
+    <div class="result-columns">
+        <div id="message"></div>
+      <div class="result-column" id="top-results"></div>
+        <div class="result-column" id="blog-results"></div>
+        <div class="result-column" id="forum-results"></div>
+        <div class="result-column" id="podcast-results"></div>
+        <div class="result-column" id="ticket-results"></div>
+        <div class="result-column" id="movie-results"></div>
+        <div class="result-column" id="music-results"></div>
+        <div class="result-column" id="other-results"></div>
+    </div>
+    </div><script>const params2 = new URLSearchParams(window.location.search);
+        const currentPage2 = params2.get("p");</script>
+    <!--<div id="navbtns"><button style="height: 40px; width: 40px; background: url('/static/img/back.png'); background-size: cover; border-radius: 40px; border: none;" onclick="window.location.href=`/search4.html?q=${params2.get('q')}`;"></button><button style="height: 40px; width: 40px; background: url('/static/img/forward.png'); background-size: cover; border-radius: 40px; border: none;" onclick="window.location.href=`/search4.html?q=${params2.get('q')}&p=2`;"></button></div>
+    <footer><div><a href="/plus/webmaster.html">Webmaster</a> &nbsp;&nbsp; <a href="/plus/terms.html">Privacy + Terms</a></div></footer>-->
+      <script src="js/rank.js"></script>
+    <script src="/js/serp-rescat2.js"></script>
+      <script src="js/stbh.js"></script>
+      <script>
+          document.getElementById("so-web").href = "/search4.html?q=" + $_GET("q");
+          document.getElementById("so-dictionary").href = "/dictionary.html?q=" + $_GET("q").toLowerCase();
+      </script>
+      </body>
+</html>
